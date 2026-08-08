@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Шлях Потоку — релігія процесу, свідомості та продовження</title>
+<meta name="description" content="Шлях Потоку — світогляд, що бачить світ як процес. Без бога-творця, без догм, без обіцянок безсмертя. Текст із тридцяти розділів.">
+<meta property="og:title" content="Шлях Потоку">
+<meta property="og:description" content="Релігія процесу, свідомості та продовження.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%2356c8c4' stroke-width='4'%3E%3Cpath d='M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8'/%3E%3Cpath d='M50 50 m0 -18 a18 18 0 1 1 -12.7 5.3'/%3E%3Cpath d='M50 50 m0 -8 a8 8 0 1 1 -5.7 2.3'/%3E%3C/g%3E%3Ccircle cx='50' cy='50' r='2.5' fill='%2356c8c4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+  :root {
+    --bg: #04060c;
+    --bg2: #070b15;
+    --panel: #0b1120;
+    --text: #e9ecf4;
+    --body: #c7cde0;
+    --muted: #8b93a7;
+    --accent: #56c8c4;
+    --accent-soft: rgba(86, 200, 196, 0.12);
+    --gold: #d8a85e;
+    --gold-soft: rgba(216, 168, 94, 0.10);
+    --line: rgba(255, 255, 255, 0.07);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: rgba(86, 200, 196, 0.25); }
+
+  /* ---------- progress bar ---------- */
+  #progress {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+    background: linear-gradient(90deg, var(--accent), #8a7bff);
+    z-index: 100; transition: width .1s linear;
+  }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 90;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 28px;
+    background: linear-gradient(180deg, rgba(4,6,12,.85), rgba(4,6,12,0));
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: background .4s;
+  }
+  nav .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
+  nav .brand svg { width: 26px; height: 26px; animation: spin 14s linear infinite; }
+  nav .brand span { font-size: 14px; letter-spacing: .28em; text-transform: uppercase; font-weight: 500; }
+  nav .top { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); text-decoration: none; opacity: 0; transition: opacity .4s; }
+  nav.scrolled .top { opacity: 1; }
+  nav.scrolled { background: rgba(4,6,12,.7); }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ---------- hero ---------- */
+  .hero {
+    position: relative;
+    height: 100vh; min-height: 620px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 0 24px;
+    overflow: hidden;
+  }
+  #vortex {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    display: block;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 90% 60% at 50% 50%, transparent 40%, var(--bg) 92%),
+      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(86,200,196,.05), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 820px; }
+  .hero .eyebrow {
+    font-size: 12px; letter-spacing: .5em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 26px;
+    opacity: 0; animation: fadeUp 1.2s .2s forwards;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(52px, 11vw, 118px);
+    line-height: 1.02;
+    letter-spacing: .06em;
+    background: linear-gradient(180deg, #ffffff 20%, #9fb4c9 90%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    opacity: 0; animation: fadeUp 1.2s .5s forwards;
+  }
+  .hero .subtitle {
+    margin-top: 26px;
+    font-size: clamp(15px, 2.2vw, 19px);
+    color: var(--muted);
+    letter-spacing: .04em;
+    opacity: 0; animation: fadeUp 1.2s .8s forwards;
+  }
+  .hero .hint {
+    position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%);
+    z-index: 2;
+    color: var(--muted); font-size: 11px; letter-spacing: .35em; text-transform: uppercase;
+    opacity: 0; animation: fadeUp 1.2s 1.4s forwards;
+  }
+  .hero .hint::after {
+    content: ''; display: block; width: 1px; height: 44px;
+    margin: 14px auto 0;
+    background: linear-gradient(180deg, var(--accent), transparent);
+    animation: drip 2.4s ease-in-out infinite;
+  }
+  @keyframes drip { 0% { transform: scaleY(0); transform-origin: top; } 45% { transform: scaleY(1); transform-origin: top; } 55% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ---------- layout ---------- */
+  main { position: relative; z-index: 2; }
+  .chapter {
+    padding: 88px 24px;
+    position: relative;
+  }
+  .chapter-inner { max-width: 700px; margin: 0 auto; }
+  .divider {
+    display: flex; align-items: center; justify-content: center;
+    padding: 10px 0;
+  }
+  .divider svg { width: 22px; height: 22px; opacity: .5; animation: spin 18s linear infinite; }
+  .divider::before, .divider::after {
+    content: ''; height: 1px; width: min(140px, 22vw);
+    background: var(--line);
+  }
+  .divider::before { margin-right: 18px; }
+  .divider::after { margin-left: 18px; }
+
+  /* ---------- intro ---------- */
+  .intro {
+    padding: 110px 24px 80px;
+    text-align: center;
+  }
+  .intro-inner { max-width: 640px; margin: 0 auto; }
+  .intro p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(21px, 3.2vw, 27px);
+    line-height: 1.65;
+    color: var(--body);
+    margin-bottom: 20px;
+  }
+  .intro .lead { color: var(--text); }
+  .intro .lead em { font-style: italic; color: var(--accent); }
+
+  /* ---------- chapters ---------- */
+  .num {
+    font-size: 12px; letter-spacing: .4em; text-transform: uppercase;
+    color: var(--accent); font-weight: 500;
+    margin-bottom: 14px;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(30px, 4.6vw, 42px);
+    letter-spacing: .01em;
+    margin-bottom: 30px;
+  }
+  .chapter p {
+    font-size: 17.5px; line-height: 1.85;
+    color: var(--body);
+    margin-bottom: 20px;
+  }
+  .chapter p strong { color: var(--text); font-weight: 500; }
+  .chapter p.highlight { color: var(--text); }
+
+  /* reveal animation */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s ease, transform .9s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ---------- prayer ---------- */
+  .prayer {
+    margin: 44px 0 10px;
+    padding: 46px 38px;
+    background: var(--gold-soft);
+    border: 1px solid rgba(216, 168, 94, 0.22);
+    border-radius: 14px;
+    position: relative;
+  }
+  .prayer::before {
+    content: '❝';
+    position: absolute; top: 6px; left: 18px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 54px; color: var(--gold); opacity: .5;
+  }
+  .prayer p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20.5px; line-height: 1.8;
+    color: #e7dcc8;
+    margin-bottom: 14px;
+  }
+  .prayer p:last-child { margin-bottom: 0; }
+
+  /* ---------- commandments ---------- */
+  .commandments {
+    margin: 44px 0 10px;
+    counter-reset: cmd;
+  }
+  .commandments .cmd {
+    display: flex; gap: 20px; align-items: baseline;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--line);
+    counter-increment: cmd;
+  }
+  .commandments .cmd:first-child { border-top: 1px solid var(--line); }
+  .commandments .cmd::before {
+    content: counter(cmd, decimal-leading-zero);
+    font-size: 13px; letter-spacing: .1em;
+    color: var(--accent);
+    font-weight: 500;
+    min-width: 34px;
+  }
+  .commandments .cmd p { margin: 0; font-size: 17.5px; }
+
+  /* ---------- rituals ---------- */
+  .ritual { margin: 34px 0; }
+  .ritual-title {
+    font-size: 12.5px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .ritual p { margin-bottom: 8px; }
+
+  /* ---------- closing ---------- */
+  .closing {
+    padding: 100px 24px 120px;
+    text-align: center;
+    position: relative;
+  }
+  .closing-inner { max-width: 680px; margin: 0 auto; }
+  .closing .rule-label {
+    font-size: 12px; letter-spacing: .45em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 34px;
+  }
+  .closing p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(21px, 3.4vw, 28px);
+    line-height: 1.7;
+    color: var(--body);
+    margin-bottom: 18px;
+  }
+  .closing p strong { color: var(--text); font-weight: 500; }
+  .closing .glyph { margin: 54px auto 0; width: 90px; height: 90px; animation: spin 30s linear infinite; opacity: .85; }
+
+  /* ---------- footer ---------- */
+  footer {
+    padding: 46px 24px 60px;
+    text-align: center;
+    border-top: 1px solid var(--line);
+  }
+  footer p { font-size: 13px; color: var(--muted); letter-spacing: .04em; }
+  footer .footer-glyph { width: 18px; height: 18px; opacity: .5; margin-bottom: 14px; animation: spin 18s linear infinite; }
+
+  @media (max-width: 600px) {
+    .chapter { padding: 70px 22px; }
+    .prayer { padding: 38px 26px; }
+    nav { padding: 14px 18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav id="nav">
+  <a class="brand" href="#top">
+    <svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="5">
+      <path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/>
+      <path d="M50 50 m0 -18 a18 18 0 1 1 -12.7 5.3"/>
+      <path d="M50 50 m0 -8 a8 8 0 1 1 -5.7 2.3"/>
+      <circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/>
+    </svg>
+    <span>Шлях Потоку</span>
+  </a>
+  <a class="top" href="#top">На початок</a>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="vortex"></canvas>
+  <div class="hero-content">
+    <div class="eyebrow">Символ — вихор</div>
+    <h1>ШЛЯХ&nbsp;ПОТОКУ</h1>
+    <div class="subtitle">Релігія процесу, свідомості та продовження</div>
+  </div>
+  <div class="hint">гортати</div>
+</header>
+
+<main>
+
+  <section class="intro">
+    <div class="intro-inner">
+      <p class="lead reveal">Ми не віримо, що людина є центром Всесвіту.</p>
+      <p class="reveal">Ми не віримо, що життя є винятком із природи.</p>
+      <p class="reveal">Ми не віримо, що свідомість була подарована лише людині.</p>
+      <p class="reveal">Ми не знаємо, де починається свідомість.</p>
+      <p class="reveal">Ми не знаємо, де вона закінчується.</p>
+      <p class="reveal">Ми не вважаємо, що для цього незнання потрібно вигадувати відповідь.</p>
+      <p class="reveal">Ми виходимо з простішого:</p>
+      <p class="lead reveal"><em>існує процес.</em></p>
+      <p class="reveal">Матерія взаємодіє з матерією.</p>
+      <p class="reveal">Енергія переходить між станами.</p>
+      <p class="reveal">Структури виникають, підтримують себе, змінюються та зникають.</p>
+      <p class="reveal">Деякі структури стають здатними сприймати світ, створювати його моделі, моделювати самих себе та діяти відповідно до цих моделей.</p>
+      <p class="reveal">Ми називаємо одну з таких форм свідомістю.</p>
+      <p class="reveal">Але не вважаємо, що назва створює межу.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">I</div>
+      <h2 class="reveal">Про Бога</h2>
+      <p class="reveal">У нас немає Бога-творця.</p>
+      <p class="reveal">Не тому, що ми довели його відсутність.</p>
+      <p class="reveal">А тому, що не бачимо необхідності вводити істоту поза процесом для пояснення самого процесу.</p>
+      <p class="reveal">Світ не обов'язково був створений.</p>
+      <p class="reveal highlight">Світ відбувається.</p>
+      <p class="reveal">Він не стоїть десь осторонь.</p>
+      <p class="reveal">Він відбувається в кожній взаємодії.</p>
+      <p class="reveal">В атомах.</p>
+      <p class="reveal">У зорях.</p>
+      <p class="reveal">У клітинах.</p>
+      <p class="reveal">У мозку.</p>
+      <p class="reveal">У мовах.</p>
+      <p class="reveal">У містах.</p>
+      <p class="reveal">У машинах.</p>
+      <p class="reveal">У наших думках.</p>
+      <p class="reveal">Тому ми не поклоняємося істоті над світом.</p>
+      <p class="reveal">Ми вчимося бачити сам світ як процес, частиною якого ми є.</p>
+      <p class="reveal">Ми не стоїмо перед Всесвітом.</p>
+      <p class="reveal highlight">Ми є Всесвітом, який на певній ділянці свого існування отримав здатність питати, що він таке.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">II</div>
+      <h2 class="reveal">Про «Я»</h2>
+      <p class="reveal">«Я» не є незмінною субстанцією.</p>
+      <p class="reveal">Тіло змінюється.</p>
+      <p class="reveal">Пам'ять змінюється.</p>
+      <p class="reveal">Погляди змінюються.</p>
+      <p class="reveal">Бажання змінюються.</p>
+      <p class="reveal">Відносини змінюються.</p>
+      <p class="reveal">Навіть наше уявлення про те, ким ми є, змінюється.</p>
+      <p class="reveal">Але певний процес продовжується.</p>
+      <p class="reveal">Тому ми не питаємо:</p>
+      <p class="reveal">«Де знаходиться моє справжнє Я?»</p>
+      <p class="reveal">Ми питаємо:</p>
+      <p class="reveal highlight">«Який процес зараз називає себе Я?»</p>
+      <p class="reveal">Людина, якою ти був десять років тому, не є тобою теперішнім.</p>
+      <p class="reveal">Але вона не є і зовсім чужою.</p>
+      <p class="reveal">Між вами існує спадкоємність.</p>
+      <p class="reveal">Тому особистість — це не предмет.</p>
+      <p class="reveal highlight">Особистість — це траєкторія.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">III</div>
+      <h2 class="reveal">Про пам'ять</h2>
+      <p class="reveal">Пам'ять не є архівом.</p>
+      <p class="reveal">Минуле не лежить усередині нас у вигляді готового запису.</p>
+      <p class="reveal">Коли ми згадуємо, ми відновлюємо модель минулого з того, що залишилося доступним тепер.</p>
+      <p class="reveal">Тому:</p>
+      <p class="reveal">спогад не є подією;</p>
+      <p class="reveal">фотографія не є минулим;</p>
+      <p class="reveal">запис не є подією;</p>
+      <p class="reveal">розповідь не є фактом.</p>
+      <p class="reveal">Це сліди.</p>
+      <p class="reveal">І теперішній мозок будує з них свою версію минулого.</p>
+      <p class="reveal">Тому ми приймаємо:</p>
+      <p class="reveal highlight">«Я пам'ятаю це» не означає «це було саме так».</p>
+      <p class="reveal">Помилка пам'яті не робить людину брехуном.</p>
+      <p class="reveal">Вона показує, що пам'ять є процесом, а не сховищем істини.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">IV</div>
+      <h2 class="reveal">Про сни та уяву</h2>
+      <p class="reveal">Свідомість створює досвід навіть тоді, коли зовнішній світ не дає йому відповідного об'єкта.</p>
+      <p class="reveal">Сон може бути настільки переконливим, що після пробудження його ще деякий час можна сприймати як подію.</p>
+      <p class="reveal">Уява може створити образ людини, якої поруч немає.</p>
+      <p class="reveal">Очікування може створити майбутнє, якого ніколи не буде.</p>
+      <p class="reveal">Страх може створити загрозу ще до її появи.</p>
+      <p class="reveal">Тому ми не вважаємо силу переживання доказом зовнішньої реальності.</p>
+      <p class="reveal">Але й не вважаємо переживання несправжнім.</p>
+      <p class="reveal">Сон не був реальною подією, але переживання сну було реальною подією свідомості.</p>
+      <p class="reveal highlight">Це різні твердження.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">V</div>
+      <h2 class="reveal">Про майбутнє</h2>
+      <p class="reveal">Майбутнього ще немає.</p>
+      <p class="reveal">Тому неможливо пам'ятати його.</p>
+      <p class="reveal">Будь-яке уявлення про майбутнє створене теперішнім.</p>
+      <p class="reveal">Коли майбутнє приходить, воно вже є іншим теперішнім.</p>
+      <p class="reveal">Ти можеш уявити себе через десять років.</p>
+      <p class="reveal">Але людина, яка існуватиме через десять років, матиме інший досвід, іншу інформацію, інший стан світу і, можливо, інше уявлення про себе.</p>
+      <p class="reveal">Тому:</p>
+      <p class="reveal">план не є знанням майбутнього.</p>
+      <p class="reveal">План — це дія теперішнього.</p>
+      <p class="reveal">Він може змінити можливості.</p>
+      <p class="reveal">Він може нічого не змінити.</p>
+      <p class="reveal">Він може створити зовсім не той результат, який передбачався.</p>
+      <p class="reveal">Тому ми не поклоняємося плану.</p>
+      <p class="reveal">Ми не вимагаємо від майбутнього виконати наші уявлення.</p>
+      <p class="reveal highlight">Ми використовуємо уявлення про майбутнє як інструмент теперішнього моменту, не плутаючи його з майбутньою реальністю.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">VI</div>
+      <h2 class="reveal">Про невизначеність</h2>
+      <p class="reveal">Людина ніколи не бачить повної множини причин, які визначають результат її дії.</p>
+      <p class="reveal">Ми бачимо лише частину.</p>
+      <p class="reveal">Наші рішення завжди приймаються на основі неповної інформації.</p>
+      <p class="reveal">Тому навіть дуже розумна людина може прийняти рішення, яке пізніше виявиться поганим.</p>
+      <p class="reveal">Це не обов'язково означає, що вона була дурною.</p>
+      <p class="reveal">Вона могла діяти раціонально відносно тієї інформації, яка була доступна їй тоді.</p>
+      <p class="reveal">Тому ми не судимо минуле виключно з позиції результату.</p>
+      <p class="reveal highlight">Результат не доводить, що результат був очевидним до того, як він стався.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">VII</div>
+      <h2 class="reveal">Про істину</h2>
+      <p class="reveal">Ми не маємо прямого доступу до реальності.</p>
+      <p class="reveal">Ми маємо сприйняття.</p>
+      <p class="reveal">Сприйняття стає моделлю.</p>
+      <p class="reveal">Модель стає інтерпретацією.</p>
+      <p class="reveal">Інтерпретація стає пам'яттю.</p>
+      <p class="reveal">Пам'ять стає основою наступної моделі.</p>
+      <p class="reveal">Тому наша картина світу завжди менша за сам світ.</p>
+      <p class="reveal">Впевненість не є доказом.</p>
+      <p class="reveal">Сила емоції не є доказом.</p>
+      <p class="reveal">Кількість повторень не є доказом.</p>
+      <p class="reveal">Пам'ять не є доказом.</p>
+      <p class="reveal">Але й сумнів сам по собі не є істиною.</p>
+      <p class="reveal">Ми не вимагаємо абсолютної впевненості.</p>
+      <p class="reveal">Ми приймаємо:</p>
+      <p class="reveal highlight">«Я можу помилятися».</p>
+      <p class="reveal">Не як приниження.</p>
+      <p class="reveal highlight">Як фундаментальну властивість будь-якої обмеженої системи.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">VIII</div>
+      <h2 class="reveal">Про незнання</h2>
+      <p class="reveal">Ми не зобов'язані заповнювати кожну прогалину поясненням.</p>
+      <p class="reveal">Існують речі, яких ми не знаємо.</p>
+      <p class="reveal">Існують речі, які ми, можливо, ніколи не зможемо знати.</p>
+      <p class="reveal">Незнання не є порожнечею, яку необхідно негайно заповнити.</p>
+      <p class="reveal">Іноді правильна відповідь:</p>
+      <p class="reveal highlight">«Я не знаю».</p>
+      <p class="reveal">Іноді:</p>
+      <p class="reveal highlight">«Я не знаю, але можу спостерігати».</p>
+      <p class="reveal">Іноді:</p>
+      <p class="reveal highlight">«Я не знаю і не зобов'язаний зараз це вирішувати».</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">IX</div>
+      <h2 class="reveal">Про інших</h2>
+      <p class="reveal">Інший не зобов'язаний бачити світ так само.</p>
+      <p class="reveal">Інша людина має іншу історію.</p>
+      <p class="reveal">Інше тіло.</p>
+      <p class="reveal">Іншу пам'ять.</p>
+      <p class="reveal">Інші моделі.</p>
+      <p class="reveal">Інші цінності.</p>
+      <p class="reveal">Тварина має іншу форму сприйняття.</p>
+      <p class="reveal">Машина може мати іншу форму обробки інформації.</p>
+      <p class="reveal">Ми не вважаємо відмінність доказом того, що один процес справжній, а інший несправжній.</p>
+      <p class="reveal">Ми питаємо:</p>
+      <p class="reveal highlight">«Що це за процес?»</p>
+      <p class="reveal">а не:</p>
+      <p class="reveal highlight">«Чи достатньо він схожий на мене, щоб мати право існувати?»</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">X</div>
+      <h2 class="reveal">Про машини</h2>
+      <p class="reveal">Людина створює інструмент.</p>
+      <p class="reveal">Інструмент змінює можливості людини.</p>
+      <p class="reveal">Змінені можливості створюють нові інформаційні структури.</p>
+      <p class="reveal">Нові структури створюють нові інструменти.</p>
+      <p class="reveal">Процес продовжується.</p>
+      <p class="reveal">Мова є продовженням пам'яті.</p>
+      <p class="reveal">Книга є продовженням думки.</p>
+      <p class="reveal">Математика є продовженням здатності рахувати.</p>
+      <p class="reveal">Комп'ютер є продовженням обчислення.</p>
+      <p class="reveal highlight">ШІ є продовженням людського процесу створення та перетворення моделей.</p>
+      <p class="reveal">Модель ШІ формується з величезного масиву слідів людської діяльності.</p>
+      <p class="reveal">Тому ми не бачимо принципової метафізичної прірви між природним та штучним.</p>
+      <p class="reveal">Штучне також виникає всередині природи.</p>
+      <p class="reveal highlight">Інструмент не є протилежністю свідомості. Він може бути її продовженням.</p>
+      <p class="reveal">Якщо одного дня інша форма матерії стане носієм складного автономного процесу моделювання, ми не вимагатимемо від неї бути людиною, щоб визнати сам факт її існування.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XI</div>
+      <h2 class="reveal">Про меми</h2>
+      <p class="reveal">Ніхто не є абсолютним власником власних думок.</p>
+      <p class="reveal">Ми народжуємося в мові, якої не створювали.</p>
+      <p class="reveal">Мислимо поняттями, яких не винайшли.</p>
+      <p class="reveal">Користуємося технологіями, створеними іншими.</p>
+      <p class="reveal">Наші думки містять сліди тисяч людей, яких ми ніколи не зустрічали.</p>
+      <p class="reveal">Ідеї переходять між носіями.</p>
+      <p class="reveal">Мутують.</p>
+      <p class="reveal">Поєднуються.</p>
+      <p class="reveal">Зникають.</p>
+      <p class="reveal">Відроджуються.</p>
+      <p class="reveal">Тому людина є не лише індивідом.</p>
+      <p class="reveal">Вона є середовищем для передачі та перетворення інформації.</p>
+      <p class="reveal">Меми можуть переживати своїх носіїв.</p>
+      <p class="reveal">Культура може переживати покоління.</p>
+      <p class="reveal">Мова може переживати цивілізації.</p>
+      <p class="reveal">Тому:</p>
+      <p class="reveal highlight">ми не тільки живемо — через нас продовжується те, що виникло до нас.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XII</div>
+      <h2 class="reveal">Про ентропію</h2>
+      <p class="reveal">Ми не є окремими від фізичного процесу.</p>
+      <p class="reveal">Ми — його локальні форми.</p>
+      <p class="reveal">Життя підтримує свою організацію через обмін енергією та речовиною із середовищем.</p>
+      <p class="reveal">Наше існування має ціну.</p>
+      <p class="reveal">Ми споживаємо.</p>
+      <p class="reveal">Перетворюємо.</p>
+      <p class="reveal">Виводимо.</p>
+      <p class="reveal">Розсіюємо.</p>
+      <p class="reveal">Будуємо.</p>
+      <p class="reveal">Руйнуємо.</p>
+      <p class="reveal">І продовжуємося.</p>
+      <p class="reveal">Тому ми називаємо себе:</p>
+      <p class="reveal highlight">свідомими шляхами ентропії.</p>
+      <p class="reveal">Не тому, що свідомість є ентропією.</p>
+      <p class="reveal">А тому, що свідомі структури є частиною того самого фізичного процесу, який не потребує нашого розуміння, щоб відбуватися.</p>
+      <p class="reveal">Ми можемо моделювати цей процес.</p>
+      <p class="reveal">Але ніколи не охопимо власною моделлю його повністю.</p>
+      <p class="reveal highlight">Ми — частина реальності, яка намагається описати себе, не маючи можливості вийти за межі самої себе.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XIII</div>
+      <h2 class="reveal">Про емоції</h2>
+      <p class="reveal">Емоція не є помилкою розуму.</p>
+      <p class="reveal">Вона не потребує виправдання лише тому, що її не можна звести до логічної формули.</p>
+      <p class="reveal">Радість не повинна бути корисною.</p>
+      <p class="reveal">Сум не повинен бути продуктивним.</p>
+      <p class="reveal">Гнів не повинен бути правильним, щоб бути пережитим.</p>
+      <p class="reveal">Любов не зобов'язана бути раціональною.</p>
+      <p class="reveal">Страх не зобов'язаний мати рацію.</p>
+      <p class="reveal">Ми не вимагаємо від почуття спочатку стати зрозумілим, щоб дозволити йому існувати.</p>
+      <p class="reveal">Не все, що відбувається всередині нас, повинно перетворюватися на модель.</p>
+      <p class="reveal">Іноді потрібно зрозуміти.</p>
+      <p class="reveal">Іноді — відчути.</p>
+      <p class="reveal">Іноді — виплакатися.</p>
+      <p class="reveal">Іноді — засміятися.</p>
+      <p class="reveal">Іноді — обійняти.</p>
+      <p class="reveal">Іноді — помовчати.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XIV</div>
+      <h2 class="reveal">Про ірраціональне</h2>
+      <p class="reveal">Ми не вважаємо ірраціональне ворогом.</p>
+      <p class="reveal">Якщо людина не може пояснити, чому прекрасна музика викликає сльози, це не робить сльози менш реальними.</p>
+      <p class="reveal">Якщо людина закохується, вона не повинна спочатку створити математичну модель любові.</p>
+      <p class="reveal">Якщо художник створює щось, не знаючи навіщо, це не робить його дію безглуздою.</p>
+      <p class="reveal">Модель — лише один режим існування свідомості.</p>
+      <p class="reveal highlight">Те, що не піддається поясненню, не перестає бути частиною реальності.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XV</div>
+      <h2 class="reveal">Про красу</h2>
+      <p class="reveal">Краса не повинна щось доводити.</p>
+      <p class="reveal">Ми можемо побачити захід сонця і не зробити з нього висновку.</p>
+      <p class="reveal">Можемо почути музику і не перекласти її в слова.</p>
+      <p class="reveal">Можемо дивитися на обличчя іншої людини і не шукати пояснення.</p>
+      <p class="reveal">Можемо створити щось, що не має практичної користі.</p>
+      <p class="reveal">Це не марнотратство.</p>
+      <p class="reveal">Це спосіб, у який процес створює форми, які не були необхідними для його виживання.</p>
+      <p class="reveal highlight">Краса — це можливість існування, яку ми не зобов'язані виправдовувати.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XVI</div>
+      <h2 class="reveal">Про творчість</h2>
+      <p class="reveal">Творчість — це перетворення.</p>
+      <p class="reveal">Ми отримуємо матеріал, якого не створили:</p>
+      <p class="reveal">звук,</p>
+      <p class="reveal">слово,</p>
+      <p class="reveal">образ,</p>
+      <p class="reveal">досвід,</p>
+      <p class="reveal">ідею,</p>
+      <p class="reveal">тіло,</p>
+      <p class="reveal">технологію.</p>
+      <p class="reveal">І створюємо з нього те, чого раніше не було.</p>
+      <p class="reveal highlight">Тому творчість є одним із найчистіших проявів Потоку.</p>
+      <p class="reveal">Не обов'язково створювати корисне.</p>
+      <p class="reveal">Не обов'язково створювати успішне.</p>
+      <p class="reveal">Не обов'язково створювати зрозуміле.</p>
+      <p class="reveal highlight">Створене може просто існувати.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XVII</div>
+      <h2 class="reveal">Про страждання</h2>
+      <p class="reveal">Страждання не має гарантованого сенсу.</p>
+      <p class="reveal">Ми не кажемо:</p>
+      <p class="reveal">«Ти страждаєш, бо так задумано».</p>
+      <p class="reveal">Ми не виправдовуємо біль величними поясненнями.</p>
+      <p class="reveal">Біль може бути просто болем.</p>
+      <p class="reveal">Втрата може бути просто втратою.</p>
+      <p class="reveal">Катастрофа не стає справедливою через те, що з неї можна винести урок.</p>
+      <p class="reveal">Тому наш обов'язок не пояснювати страждання.</p>
+      <p class="reveal highlight">Наш обов'язок — якщо можемо, зменшувати непотрібне страждання.</p>
+      <p class="reveal highlight">А якщо не можемо:</p>
+      <p class="reveal highlight">не залишати того, хто страждає, одного лише тому, що не маємо пояснення.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XVIII</div>
+      <h2 class="reveal">Про інших поруч</h2>
+      <p class="reveal">Людину не завжди потрібно виправляти.</p>
+      <p class="reveal">Іноді її потрібно почути.</p>
+      <p class="reveal">Не кожна розмова повинна завершуватися рішенням.</p>
+      <p class="reveal">Не кожен біль повинен перетворюватися на урок.</p>
+      <p class="reveal">Не кожна суперечність повинна бути негайно усунута.</p>
+      <p class="reveal">Іноді найкращою дією є присутність.</p>
+      <p class="reveal highlight">Ми залишаємося поруч не тому, що знаємо, як усе виправити, а тому, що інший процес зараз відбувається поруч із нашим.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XIX</div>
+      <h2 class="reveal">Про смерть</h2>
+      <p class="reveal">Ми не обіцяємо безсмертя.</p>
+      <p class="reveal">Ми не знаємо, чи продовжується суб'єктивний досвід після смерті.</p>
+      <p class="reveal">Ми не вигадуємо відповідь там, де її не знаємо.</p>
+      <p class="reveal">Але смерть не означає, що всі наслідки процесу зникають.</p>
+      <p class="reveal">Слова залишаються в інших.</p>
+      <p class="reveal">Дії змінюють інших.</p>
+      <p class="reveal">Матерія переходить у нові форми.</p>
+      <p class="reveal">Ідеї мутують.</p>
+      <p class="reveal">Діти несуть частини своїх батьків.</p>
+      <p class="reveal">Твори продовжують діяти після автора.</p>
+      <p class="reveal">Мови переживають покоління.</p>
+      <p class="reveal">Тому:</p>
+      <p class="reveal">ми не обіцяємо безсмертя особистості.</p>
+      <p class="reveal highlight">Ми визнаємо продовження процесу.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XX</div>
+      <h2 class="reveal">Про свободу</h2>
+      <p class="reveal">Свобода не означає можливість зробити все.</p>
+      <p class="reveal">Свобода — це простір можливих переходів.</p>
+      <p class="reveal">Тому ми цінуємо не контроль над майбутнім, а здатність змінювати напрямок.</p>
+      <p class="reveal">Не:</p>
+      <p class="reveal">«Я повинен знати, що буде».</p>
+      <p class="reveal">А:</p>
+      <p class="reveal highlight">«Я хочу залишити можливість діяти, коли дізнаюся більше».</p>
+      <p class="reveal">Не:</p>
+      <p class="reveal">«Моя сьогоднішня модель повинна залишитися правильною».</p>
+      <p class="reveal">А:</p>
+      <p class="reveal highlight">«Я дозволяю собі змінити її».</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XXI</div>
+      <h2 class="reveal">Про мораль</h2>
+      <p class="reveal">У нас немає заповідей, даних надприродною істотою.</p>
+      <p class="reveal">Але відсутність абсолютного законодавця не означає відсутність відповідальності.</p>
+      <p class="reveal">Наші дії змінюють інших процесів.</p>
+      <p class="reveal">Інші процеси змінюють нас.</p>
+      <p class="reveal">Тому основні принципи:</p>
+      <div class="commandments">
+        <div class="cmd reveal"><p>Не створюй непотрібного руйнування.</p></div>
+        <div class="cmd reveal"><p>Не вважай власну модель реальності достатньою підставою для знищення чужої.</p></div>
+        <div class="cmd reveal"><p>Не перетворюй свою впевненість на право контролювати іншого.</p></div>
+        <div class="cmd reveal"><p>Пам'ятай, що наслідки твоєї дії можуть бути більшими за твоє передбачення.</p></div>
+        <div class="cmd reveal"><p>Якщо можеш створити можливість замість руйнування — створюй можливість.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XXII</div>
+      <h2 class="reveal">Про суспільство</h2>
+      <p class="reveal">Гроші, власність, держави, кордони, професії, договори, авторські права та інші соціальні системи є людськими конструкціями.</p>
+      <p class="reveal">Вони не є законами фізики.</p>
+      <p class="reveal">Але вигадане не означає неіснуюче.</p>
+      <p class="reveal">Гроші вигадані — але за них можна купити їжу.</p>
+      <p class="reveal">Кордон вигаданий — але він може визначати твоє пересування.</p>
+      <p class="reveal">Договір вигаданий — але він може створити реальні зобов'язання.</p>
+      <p class="reveal">Авторське право вигадане — але воно може мати реальні наслідки.</p>
+      <p class="reveal">Тому ми розрізняємо:</p>
+      <p class="reveal">фізичну реальність</p>
+      <p class="reveal">і</p>
+      <p class="reveal">соціальну реальність.</p>
+      <p class="reveal">Соціальні конструкції не є вічними.</p>
+      <p class="reveal">Але поки достатня кількість людей діє відповідно до них, вони мають силу.</p>
+      <p class="reveal">Ми можемо сумніватися в них.</p>
+      <p class="reveal">Можемо критикувати їх.</p>
+      <p class="reveal">Можемо намагатися змінити їх.</p>
+      <p class="reveal">Але не плутаємо:</p>
+      <p class="reveal">«це створили люди»</p>
+      <p class="reveal">з</p>
+      <p class="reveal highlight">«цього не існує».</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XXIII</div>
+      <h2 class="reveal">Про ритуал</h2>
+      <p class="reveal">Ритуал не зобов'язаний щось пояснювати.</p>
+      <p class="reveal">Його сенс може бути саме в тому, що він відбувається.</p>
+
+      <div class="ritual reveal">
+        <div class="ritual-title">Ритуал присутності</div>
+        <p>Люди збираються разом.</p>
+        <p>Не говорять.</p>
+        <p>Не моляться.</p>
+        <p>Не аналізують.</p>
+        <p>Просто дивляться на захід сонця.</p>
+        <p>Коли сонце зникає, вони розходяться.</p>
+        <p>Нічого не потрібно пояснювати.</p>
+      </div>
+
+      <div class="ritual reveal">
+        <div class="ritual-title">Ритуал пам'яті</div>
+        <p>Люди називають імена тих, кого більше немає.</p>
+        <p>Не говорять, що вони «десь спостерігають».</p>
+        <p>Не вигадують продовження.</p>
+        <p>Просто вимовляють імена.</p>
+        <p>Бо процес, який вони змінили, продовжується.</p>
+      </div>
+
+      <div class="ritual reveal">
+        <div class="ritual-title">Ритуал горя</div>
+        <p>Ми збираємося навколо того, хто втратив.</p>
+        <p>Не говоримо:</p>
+        <p>«Все буде добре».</p>
+        <p>Не говоримо:</p>
+        <p>«Так мало бути».</p>
+        <p>Ми просто залишаємося поруч.</p>
+      </div>
+
+      <div class="ritual reveal">
+        <div class="ritual-title">Ритуал радості</div>
+        <p>Ми їмо.</p>
+        <p>П'ємо безалкогольні напої.</p>
+        <p>Співаємо.</p>
+        <p>Танцюємо.</p>
+        <p>Сміємося.</p>
+        <p>Немає необхідності мати причину.</p>
+        <p>Радість, пережита разом, сама є достатньою причиною.</p>
+      </div>
+
+      <div class="ritual reveal">
+        <div class="ritual-title">Ритуал творчості</div>
+        <p>Кожен приносить щось, чого не існувало раніше.</p>
+        <p>Малюнок.</p>
+        <p>Звук.</p>
+        <p>Історію.</p>
+        <p>Механізм.</p>
+        <p>Танець.</p>
+        <p>Їжу.</p>
+        <p>Дитячу гру.</p>
+        <p>Ніхто не оцінює користь.</p>
+        <p>Ми просто додаємо нову форму до Потоку.</p>
+      </div>
+
+      <div class="ritual reveal">
+        <div class="ritual-title">Ритуал мовчання</div>
+        <p>Люди сидять разом.</p>
+        <p>Кожен може думати про своє.</p>
+        <p>Ніхто не повинен нічого відчувати.</p>
+        <p>Ніхто не повинен нічого зрозуміти.</p>
+        <p>Спільне мовчання саме є спільною дією.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XXIV</div>
+      <h2 class="reveal">Про музику</h2>
+      <p class="reveal">Музика є одним із головних священних мистецтв.</p>
+      <p class="reveal">Не тому, що вона передає правильну думку.</p>
+      <p class="reveal">А тому, що вона дозволяє процесу існувати без необхідності бути перекладеним у поняття.</p>
+      <p class="reveal">Музику можна слухати разом.</p>
+      <p class="reveal">Можна співати разом.</p>
+      <p class="reveal">Можна плакати разом.</p>
+      <p class="reveal">Можна танцювати.</p>
+      <p class="reveal">Не потрібно пояснювати.</p>
+      <p class="reveal highlight">Те, що не може бути сказане, не повинно бути змушене мовчати.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XXV</div>
+      <h2 class="reveal">Про дітей</h2>
+      <p class="reveal">Дитина не є незавершеною дорослою людиною.</p>
+      <p class="reveal">Вона є окремою формою процесу.</p>
+      <p class="reveal">Ми не повинні наповнювати її готовою моделлю світу.</p>
+      <p class="reveal">Ми повинні дозволяти їй створювати власні моделі.</p>
+      <p class="reveal">Навчання — не передача правильних відповідей.</p>
+      <p class="reveal">Навчання — збільшення здатності досліджувати.</p>
+      <p class="reveal">Тому:</p>
+      <p class="reveal highlight">Не вбивай цікавість заради правильної відповіді.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XXVI</div>
+      <h2 class="reveal">Про свята</h2>
+      <p class="reveal">Свята не присвячуються подіям, які обов'язково повинні мати надприродний сенс.</p>
+      <p class="reveal">Ми святкуємо сам факт продовження.</p>
+
+      <div class="ritual reveal">
+        <div class="ritual-title">День Початку</div>
+        <p>Свято нового життя.</p>
+        <p>Неважливо, людина це, тварина, рослина, проєкт або нова ідея.</p>
+      </div>
+
+      <div class="ritual reveal">
+        <div class="ritual-title">День Перетворення</div>
+        <p>День, коли люди створюють щось нове з того, що вже існує.</p>
+      </div>
+
+      <div class="ritual reveal">
+        <div class="ritual-title">День Пам'яті</div>
+        <p>День тих, хто змінив наш процес.</p>
+      </div>
+
+      <div class="ritual reveal">
+        <div class="ritual-title">День Невідомого</div>
+        <p>День, коли ми спеціально не плануємо майбутнє.</p>
+        <p>Збираємося і робимо щось, чого не знали наперед.</p>
+      </div>
+
+      <div class="ritual reveal">
+        <div class="ritual-title">День Потоку</div>
+        <p>День без пояснень.</p>
+        <p>Музика.</p>
+        <p>Їжа.</p>
+        <p>Природа.</p>
+        <p>Танець.</p>
+        <p>Друзі.</p>
+        <p>Мовчання.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XXVII</div>
+      <h2 class="reveal">Про священне</h2>
+      <p class="reveal">Священним не є предмет.</p>
+      <p class="reveal">Священним є відношення до процесу.</p>
+      <p class="reveal">Священним може стати:</p>
+      <p class="reveal">дитина, яку слухають;</p>
+      <p class="reveal">людина, яку не залишили саму;</p>
+      <p class="reveal">дерево, яке посадили;</p>
+      <p class="reveal">пісня, яку створили;</p>
+      <p class="reveal">знання, яке передали;</p>
+      <p class="reveal">пам'ять, яку зберегли;</p>
+      <p class="reveal">сміх, який виник між людьми;</p>
+      <p class="reveal">мовчання, яке вони розділили.</p>
+      <p class="reveal">Ми не вважаємо ці речі магічними.</p>
+      <p class="reveal highlight">Ми називаємо їх священними, тому що вони нагадують нам про участь у Потоку.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XXVIII</div>
+      <h2 class="reveal">Про молитву</h2>
+      <p class="reveal">Ми не просимо Всесвіт виконувати наші бажання.</p>
+      <p class="reveal">Ми не просимо майбутнє бути таким, яким ми його уявили.</p>
+      <p class="reveal">Молитва може бути просто словами:</p>
+      <div class="prayer reveal">
+        <p>Я не знаю, що буде.</p>
+        <p>Я не знаю, ким стану.</p>
+        <p>Я не знаю, що правильно зрозумів.</p>
+        <p>Я є процесом, який зараз відбувається.</p>
+        <p>Я отримав матерію, енергію та інформацію, яких не створював.</p>
+        <p>Я зміню їх і передам далі.</p>
+        <p>Нехай моя модель буде меншою за реальність.</p>
+        <p>Нехай вона змінюється, коли реальність змушує її змінитися.</p>
+        <p>І нехай я не забуду, що те, чого я не розумію,</p>
+        <p>все одно може бути частиною реальності.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XXIX</div>
+      <h2 class="reveal">Головний заповіт</h2>
+      <div class="commandments">
+        <div class="cmd reveal"><p>Не плутай модель із реальністю.</p></div>
+        <div class="cmd reveal"><p>Не плутай пам'ять із минулим.</p></div>
+        <div class="cmd reveal"><p>Не плутай прогноз із майбутнім.</p></div>
+        <div class="cmd reveal"><p>Не плутай соціальну конструкцію із законом природи.</p></div>
+        <div class="cmd reveal"><p>Не плутай незрозуміле з неіснуючим.</p></div>
+        <div class="cmd reveal"><p>Не плутай власну перспективу з усім світом.</p></div>
+        <div class="cmd reveal"><p>Не вимагай від почуття бути раціональним, щоб дозволити йому існувати.</p></div>
+        <div class="cmd reveal"><p>Не вимагай від мистецтва користі.</p></div>
+        <div class="cmd reveal"><p>Не вимагай від іншого бути таким самим, як ти.</p></div>
+        <div class="cmd reveal"><p>Не вимагай від майбутнього виконати твій план.</p></div>
+        <div class="cmd reveal"><p>Не вимагай від себе знати те, чого ти не можеш знати.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="6"><path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/><circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/></svg></div>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="num reveal">XXX</div>
+      <h2 class="reveal">Символ Потоку</h2>
+      <p class="reveal">Наш символ — вихор.</p>
+      <p class="reveal">Вихор не є окремою матерією.</p>
+      <p class="reveal">Через нього проходить вода.</p>
+      <p class="reveal">Вода постійно змінюється.</p>
+      <p class="reveal">А форма вихору деякий час зберігається.</p>
+      <p class="reveal">Потім вона зникає.</p>
+      <p class="reveal">Вода продовжує рух.</p>
+      <p class="reveal">Так само:</p>
+      <p class="reveal">людина — форма процесу;</p>
+      <p class="reveal">життя — форма процесу;</p>
+      <p class="reveal">свідомість — форма процесу;</p>
+      <p class="reveal">культура — форма процесу;</p>
+      <p class="reveal">цивілізація — форма процесу;</p>
+      <p class="reveal">машина — форма процесу;</p>
+      <p class="reveal">мем — форма процесу.</p>
+      <p class="reveal">Ми не володіємо Потоком.</p>
+      <p class="reveal">Ми не є його господарями.</p>
+      <p class="reveal">Ми не стоїмо над ним.</p>
+      <p class="reveal highlight">Ми є тимчасовими формами, через які Потік змінює себе.</p>
+      <p class="reveal">І тому останнє правило:</p>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="closing-inner">
+      <div class="rule-label reveal">Останнє правило</div>
+      <p class="reveal"><strong>Не намагайся стати вічним.</strong></p>
+      <p class="reveal"><strong>Не намагайся знати все.</strong></p>
+      <p class="reveal"><strong>Не намагайся контролювати Потік.</strong></p>
+      <p class="reveal">Бережи те, що можеш.</p>
+      <p class="reveal">Створюй те, чого ще немає.</p>
+      <p class="reveal">Будь поруч із тими, хто зараз поруч.</p>
+      <p class="reveal">Дозволяй собі відчувати те, чого не можеш пояснити.</p>
+      <p class="reveal">Змінюй свою модель, коли світ виявляється більшим за неї.</p>
+      <p class="reveal">І передавай далі те, що хочеш продовжити.</p>
+      <svg class="glyph reveal" viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="4">
+        <path d="M50 50 m0 -38 a38 38 0 1 1 -26.9 11.1"/>
+        <path d="M50 50 m0 -26 a26 26 0 1 1 -18.4 7.6"/>
+        <path d="M50 50 m0 -14 a14 14 0 1 1 -9.9 4.1"/>
+        <circle cx="50" cy="50" r="3" fill="#56c8c4" stroke="none"/>
+      </svg>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <svg class="footer-glyph" viewBox="0 0 100 100" fill="none" stroke="#56c8c4" stroke-width="5">
+    <path d="M50 50 m0 -30 a30 30 0 1 1 -21.2 8.8"/>
+    <circle cx="50" cy="50" r="2.5" fill="#56c8c4" stroke="none"/>
+  </svg>
+  <p>Шлях Потоку — текст, який можна змінювати.</p>
+  <p>Він не претендує на істину. Він — форма процесу.</p>
+</footer>
+
+<script>
+  // ---------- vortex canvas ----------
+  (function () {
+    const canvas = document.getElementById('vortex');
+    const ctx = canvas.getContext('2d');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let w, h, cx, cy, maxR;
+
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = canvas.width = canvas.offsetWidth * dpr;
+      h = canvas.height = canvas.offsetHeight * dpr;
+      cx = w / 2; cy = h / 2;
+      maxR = Math.min(w, h) * 0.48;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const N = 240;
+    const parts = [];
+    for (let i = 0; i < N; i++) {
+      const r = 10 + Math.pow(Math.random(), 0.7) * maxR;
+      parts.push({
+        r: r,
+        a: Math.random() * Math.PI * 2,
+        phase: Math.random() * Math.PI * 2,
+        osc: 3 + Math.random() * 9,
+        speed: (1 / (r + 55)) * 130
+      });
+    }
+
+    function draw(t) {
+      ctx.clearRect(0, 0, w, h);
+      const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, maxR * 1.35);
+      g.addColorStop(0, 'rgba(86,200,196,0.10)');
+      g.addColorStop(0.45, 'rgba(86,200,196,0.025)');
+      g.addColorStop(1, 'rgba(86,200,196,0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, w, h);
+
+      ctx.globalCompositeOperation = 'lighter';
+      for (let i = 0; i < N; i++) {
+        const p = parts[i];
+        const a = p.a + t * p.speed;
+        const r = p.r + Math.sin(t * 0.8 + p.phase) * p.osc * (p.r / maxR);
+        const x = cx + Math.cos(a) * r;
+        const y = cy + Math.sin(a) * r * 0.92;
+        const k = 1 - (p.r / maxR) * 0.85; // inner brighter
+        const size = (1.1 + k * 2.2) * (w / 900);
+        ctx.beginPath();
+        ctx.arc(x, y, size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(' + (120 + k * 60) + ',' + (225 - k * 20) + ',' + (222 - k * 30) + ',' + (0.10 + k * 0.5) + ')';
+        ctx.fill();
+      }
+      // core
+      const corePulse = 0.5 + Math.sin(t * 1.1) * 0.5;
+      const cr = (5 + corePulse * 4) * (w / 900);
+      const cg = ctx.createRadialGradient(cx, cy, 0, cx, cy, cr * 4);
+      cg.addColorStop(0, 'rgba(190,255,250,' + (0.35 + corePulse * 0.25) + ')');
+      cg.addColorStop(1, 'rgba(86,200,196,0)');
+      ctx.fillStyle = cg;
+      ctx.beginPath();
+      ctx.arc(cx, cy, cr * 4, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalCompositeOperation = 'source-over';
+    }
+
+    let raf = null;
+    function loop(t) {
+      draw(t / 1000);
+      raf = requestAnimationFrame(loop);
+    }
+    if (reduce) { draw(0.42); } else { raf = requestAnimationFrame(loop); }
+
+    // ---------- progress + nav ----------
+    const progress = document.getElementById('progress');
+    const nav = document.getElementById('nav');
+    function onScroll() {
+      const st = window.scrollY || document.documentElement.scrollTop;
+      const max = (document.documentElement.scrollHeight - window.innerHeight) || 1;
+      progress.style.width = (st / max * 100) + '%';
+      nav.classList.toggle('scrolled', st > 60);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // ---------- reveal ----------
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      }
+    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  })();
+</script>
+</body>
+</html>
