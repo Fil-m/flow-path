@@ -407,6 +407,21 @@ mark.hit {
   .lang-switch a { padding: 6px 7px; }
 }
 
+@media (max-width: 400px) {
+  nav { padding: 12px 12px; }
+  nav .brand span { display: none; }
+  nav .brand svg { width: 24px; height: 24px; }
+  .nav-right { gap: 6px; }
+  .nav-btn { padding: 7px 9px; }
+  .lang-switch { margin-right: 0; }
+  .lang-switch a { padding: 5px 6px; font-size: 11px; }
+}
+
+@media (max-width: 340px) {
+  nav .brand { gap: 0; }
+  .lang-switch .sep { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   html { scroll-behavior: auto; }

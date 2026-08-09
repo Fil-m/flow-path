@@ -1135,13 +1135,26 @@
       document.body.style.overflow = '';
       searchInput.value = '';
       update('');
+      // прибираємо #panel з URL, щоб :target не тримав панель відкритою
+      try {
+        if (location.hash === '#panel') {
+          history.replaceState(null, '', location.pathname + location.search);
+        }
+      } catch (e) {}
     }
 
     function goTo(id, query) {
       closePanel();
       const target = document.getElementById(id);
       if (!target) return;
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // надійний скрол: scrollIntoView + fallback через scrollTo
+      try {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } catch (e) {
+        window.scrollTo(0, target.getBoundingClientRect().top + window.scrollY - 70);
+      }
+      // синхронізуємо hash без повторного скролу
+      try { history.replaceState(null, '', '#' + id); } catch (e) {}
       if (query) {
         setTimeout(() => highlightIn(target, query), 500);
       }
