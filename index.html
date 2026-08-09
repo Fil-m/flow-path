@@ -41,6 +41,8 @@
       <span class="sep">/</span>
       <a href="en/" hreflang="en">EN</a>
     </div>
+    <a class="nav-btn" href="#toc">📖 Зміст</a>
+    <a class="nav-btn" href="#toc-search">🔍 Пошук</a>
   </div>
 </nav>
 
@@ -55,8 +57,14 @@
 </header>
 
 <div class="toc" id="toc">
-  <div class="toc-title">📖 Зміст — 30 розділів</div>
-  <div class="toc-grid">
+  <div class="toc-head">
+    <div class="toc-title">📖 Зміст — 30 розділів</div>
+  </div>
+  <div class="search-wrap">
+    <input type="text" id="toc-search" placeholder="Пошук по розділах…" autocomplete="off">
+    <span class="search-clear" id="toc-clear" aria-hidden="true">✕</span>
+  </div>
+  <div class="toc-grid" id="toc-grid">
     <a href="#intro">Вступ</a>
     <a href="#ch1">I · Про Бога</a>
     <a href="#ch2">II · Про «Я»</a>
@@ -989,6 +997,36 @@
     }
   }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  /* ---------- пошук по змісту (тільки фільтр списку, кліки — нативні якорі) ---------- */
+  const tocSearch = document.getElementById('toc-search');
+  if (tocSearch) {
+    const grid = document.getElementById('toc-grid');
+    const clearBtn = document.getElementById('toc-clear');
+    const links = grid ? Array.from(grid.querySelectorAll('a')) : [];
+    let emptyMsg = null;
+    function applyFilter() {
+      const q = tocSearch.value.trim().toLowerCase();
+      let visible = 0;
+      links.forEach((a) => {
+        const match = a.textContent.toLowerCase().indexOf(q) !== -1;
+        a.classList.toggle('hidden', !match);
+        if (match) visible++;
+      });
+      if (clearBtn) clearBtn.classList.toggle('show', q.length > 0);
+      if (!emptyMsg) {
+        emptyMsg = document.createElement('div');
+        emptyMsg.className = 'toc-empty';
+        emptyMsg.textContent = grid.dataset.empty || 'Нічого не знайдено';
+        grid.appendChild(emptyMsg);
+      }
+      emptyMsg.classList.toggle('show', q.length > 0 && visible === 0);
+    }
+    tocSearch.addEventListener('input', applyFilter);
+    if (clearBtn) clearBtn.addEventListener('click', () => { tocSearch.value = ''; applyFilter(); tocSearch.focus(); });
+    // якщо прийшли з кнопки «Пошук» в шапці — фокусуємо поле
+    if (location.hash === '#toc-search') setTimeout(() => { try { tocSearch.focus(); } catch (e) {} }, 300);
+  }
 })();
 
 </script>
