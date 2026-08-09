@@ -112,9 +112,9 @@ nav .brand span { font-size: 14px; letter-spacing: .28em; text-transform: upperc
   opacity: 0; animation: fadeUp 1.2s .2s forwards;
 }
 .hero h1 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
   font-weight: 500;
-  font-size: clamp(52px, 11vw, 118px);
+  font-size: clamp(44px, 9.5vw, 118px);
   line-height: 1.02;
   letter-spacing: .06em;
   overflow-wrap: break-word;
