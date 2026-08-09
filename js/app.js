@@ -108,7 +108,6 @@
     const listEl = document.getElementById('panel-list');
     const resultsEl = document.getElementById('search-results');
     const countEl = document.getElementById('search-count');
-    const btnMenu = document.getElementById('btn-menu');
     const btnSearch = document.getElementById('btn-search');
     const btnClose = document.getElementById('panel-close');
 
@@ -233,14 +232,22 @@
       closePanel();
       const target = document.getElementById(id);
       if (!target) return;
-      // надійний скрол: scrollIntoView + fallback через scrollTo
+      // надійний скрол: спочатку спробуємо scrollIntoView, потім location.hash як fallback
+      let done = false;
       try {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } catch (e) {
-        window.scrollTo(0, target.getBoundingClientRect().top + window.scrollY - 70);
+        done = true;
+      } catch (e) { done = false; }
+      if (!done) {
+        try {
+          location.hash = id;
+        } catch (e) {
+          window.scrollTo(0, target.getBoundingClientRect().top + window.scrollY - 70);
+        }
+      } else {
+        // синхронізуємо hash без повторного скролу
+        try { history.replaceState(null, '', '#' + id); } catch (e) {}
       }
-      // синхронізуємо hash без повторного скролу
-      try { history.replaceState(null, '', '#' + id); } catch (e) {}
       if (query) {
         setTimeout(() => highlightIn(target, query), 500);
       }
@@ -295,7 +302,6 @@
     });
 
     /* events */
-    btnMenu && btnMenu.addEventListener('click', (e) => { e.preventDefault(); openPanel(false); });
     btnSearch && btnSearch.addEventListener('click', (e) => { e.preventDefault(); openPanel(true); });
     btnClose && btnClose.addEventListener('click', (e) => { e.preventDefault(); closePanel(); });
     searchInput.addEventListener('input', () => update(searchInput.value));

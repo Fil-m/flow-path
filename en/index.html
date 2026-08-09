@@ -41,17 +41,11 @@
       <span class="sep">/</span>
       <a href="./" class="active" hreflang="en">EN</a>
     </div>
-    <button class="nav-btn" id="btn-search" aria-label="Search the site">
+    <a class="nav-btn" id="btn-search" href="#panel" aria-label="Search the site">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
         <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/>
       </svg>
       <span class="nav-label">Search</span>
-    </button>
-    <a class="nav-btn" id="btn-menu" href="#panel" aria-label="Contents">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>
-      </svg>
-      <span class="nav-label">Chapters</span>
     </a>
   </div>
 </nav>
@@ -863,7 +857,7 @@
 <div class="panel" id="panel" data-no-results="Nothing found" data-count-label="chapters">
   <div class="panel-box">
     <div class="panel-head">
-      <h3>Contents</h3>
+      <h3>Search &amp; contents</h3>
       <a class="panel-close" id="panel-close" href="#top" aria-label="Close">✕</a>
     </div>
     <div class="search-wrap">
@@ -1022,7 +1016,6 @@
     const listEl = document.getElementById('panel-list');
     const resultsEl = document.getElementById('search-results');
     const countEl = document.getElementById('search-count');
-    const btnMenu = document.getElementById('btn-menu');
     const btnSearch = document.getElementById('btn-search');
     const btnClose = document.getElementById('panel-close');
 
@@ -1147,14 +1140,22 @@
       closePanel();
       const target = document.getElementById(id);
       if (!target) return;
-      // надійний скрол: scrollIntoView + fallback через scrollTo
+      // надійний скрол: спочатку спробуємо scrollIntoView, потім location.hash як fallback
+      let done = false;
       try {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } catch (e) {
-        window.scrollTo(0, target.getBoundingClientRect().top + window.scrollY - 70);
+        done = true;
+      } catch (e) { done = false; }
+      if (!done) {
+        try {
+          location.hash = id;
+        } catch (e) {
+          window.scrollTo(0, target.getBoundingClientRect().top + window.scrollY - 70);
+        }
+      } else {
+        // синхронізуємо hash без повторного скролу
+        try { history.replaceState(null, '', '#' + id); } catch (e) {}
       }
-      // синхронізуємо hash без повторного скролу
-      try { history.replaceState(null, '', '#' + id); } catch (e) {}
       if (query) {
         setTimeout(() => highlightIn(target, query), 500);
       }
@@ -1209,7 +1210,6 @@
     });
 
     /* events */
-    btnMenu && btnMenu.addEventListener('click', (e) => { e.preventDefault(); openPanel(false); });
     btnSearch && btnSearch.addEventListener('click', (e) => { e.preventDefault(); openPanel(true); });
     btnClose && btnClose.addEventListener('click', (e) => { e.preventDefault(); closePanel(); });
     searchInput.addEventListener('input', () => update(searchInput.value));
