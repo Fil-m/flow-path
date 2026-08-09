@@ -152,12 +152,9 @@
           (s.hint ? '<span class="pi-hint">' + esc(s.hint) + '</span>' : '') + '</span>';
         listEl.appendChild(item);
       });
-      listEl.querySelectorAll('.panel-item').forEach((el) => {
-        el.addEventListener('click', (e) => {
-          e.preventDefault();
-          goTo(el.dataset.target);
-        });
-      });
+      // Кліки по пунктах змісту — нативні HTML-якорі (href="#id").
+      // Браузер сам змінить hash → CSS :target закриє панель і прокрутить.
+      // Жодного JS-перехоплення: це працює в будь-якому WebView.
     }
 
     function renderResults(q) {
@@ -171,9 +168,10 @@
         if (inTitle === -1 && inText === -1) return;
         if (n >= 12) return;
         n++;
-        const btn = document.createElement('button');
+        const btn = document.createElement('a');
         btn.className = 'search-result';
-        btn.type = 'button';
+        btn.href = '#' + s.id;
+        btn.dataset.target = s.id;
         let snip;
         if (inTitle !== -1 && (inText === -1 || inTitle <= inText)) {
           snip = s.text.slice(0, 140) + (s.text.length > 140 ? '…' : '');
@@ -183,7 +181,7 @@
         btn.innerHTML =
           '<div class="sr-title">' + esc(s.title) + '</div>' +
           '<div class="sr-snippet">' + snip + '</div>';
-        btn.addEventListener('click', () => goTo(s.id, q));
+        // нативний якір (href="#id") — без JS-перехоплення
         resultsEl.appendChild(btn);
       });
       if (n === 0) {
@@ -207,53 +205,20 @@
       }
     }
 
-    function openPanel(focusSearch) {
+    function panelOpen() {
       panel.classList.add('open');
       document.body.style.overflow = 'hidden';
-      if (focusSearch) {
-        searchInput.focus();
-        searchInput.select();
-      }
     }
-    function closePanel() {
+    function panelClose() {
       panel.classList.remove('open');
       document.body.style.overflow = '';
       searchInput.value = '';
       update('');
-      // прибираємо #panel з URL, щоб :target не тримав панель відкритою
       try {
-        if (location.hash === '#panel') {
+        if (location.hash === '#panel' || location.hash === '#close') {
           history.replaceState(null, '', location.pathname + location.search);
         }
       } catch (e) {}
-    }
-
-    function goTo(id, query) {
-      closePanel();
-      const target = document.getElementById(id);
-      if (!target) return;
-      // надійний скрол: спочатку спробуємо scrollIntoView, потім location.hash як fallback
-      let done = false;
-      try {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        done = true;
-      } catch (e) { done = false; }
-      if (!done) {
-        try {
-          location.hash = id;
-        } catch (e) {
-          window.scrollTo(0, target.getBoundingClientRect().top + window.scrollY - 70);
-        }
-      } else {
-        // синхронізуємо hash без повторного скролу
-        try { history.replaceState(null, '', '#' + id); } catch (e) {}
-      }
-      if (query) {
-        setTimeout(() => highlightIn(target, query), 500);
-      }
-      // pulse the active item
-      const items = document.querySelectorAll('.panel-item');
-      items.forEach((i) => i.classList.remove('active'));
     }
 
     function highlightIn(root, query) {
@@ -301,24 +266,37 @@
       if (!s.classList.contains('hero')) secObserver.observe(s);
     });
 
-    /* events */
-    btnSearch && btnSearch.addEventListener('click', (e) => { e.preventDefault(); openPanel(true); });
-    btnClose && btnClose.addEventListener('click', (e) => { e.preventDefault(); closePanel(); });
+    /* events
+       Відкриття/закриття панелі та переходи по розділах — НАТИВНІ:
+       - кнопка Пошук → <a href="#panel"> → CSS :target показує панель
+       - пункт змісту → <a href="#chN"> → браузер сам скролить, :target зникає → панель закривається
+       - ✕ → <a href="#close"> → :target зникає → панель закривається
+       JS тут лише для зручності: фокус на полі, підсвітка слів, Escape. */
+    btnSearch && btnSearch.addEventListener('click', () => {
+      if (location.hash === '#panel') panelOpen();
+      setTimeout(() => { try { searchInput.focus(); searchInput.select(); } catch (e) {} }, 250);
+    });
+    btnClose && btnClose.addEventListener('click', () => { panelClose(); });
+    window.addEventListener('hashchange', () => {
+      const h = location.hash;
+      if (h === '#panel') { panelOpen(); }
+      else { document.body.style.overflow = ''; panel.classList.remove('open'); }
+    });
     searchInput.addEventListener('input', () => update(searchInput.value));
     searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closePanel();
+      if (e.key === 'Escape') panelClose();
       if (e.key === 'Enter') {
         const first = resultsEl.querySelector('.search-result');
         if (first) first.click();
       }
     });
-    panel.addEventListener('click', (e) => { if (e.target === panel) closePanel(); });
+    panel.addEventListener('click', (e) => { if (e.target === panel) panelClose(); });
 
     document.addEventListener('keydown', (e) => {
       if ((e.key === '/' && !panel.classList.contains('open') && !/INPUT|TEXTAREA/i.test(document.activeElement.tagName)) ||
           ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k')) {
         e.preventDefault();
-        openPanel(true);
+        location.hash = 'panel';
       }
     });
 

@@ -19,6 +19,9 @@
 
 html { scroll-behavior: smooth; }
 
+/* нативні якорі: не ховати заголовок під фіксованим nav */
+section[id], .intro[id], header[id] { scroll-margin-top: 84px; }
+
 body {
   background: var(--bg);
   color: var(--text);
@@ -386,6 +389,7 @@ mark.hit {
 .search-result {
   display: block; text-align: left; width: 100%;
   background: none; border: none; cursor: pointer;
+  text-decoration: none; color: inherit;
   padding: 12px 14px; border-radius: 10px;
   transition: background .25s;
   font-family: 'Inter', sans-serif;
