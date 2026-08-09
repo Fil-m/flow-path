@@ -310,8 +310,7 @@ mark.hit {
   padding: 0 28px;
   font-weight: 300;
 }
-.toc summary {
-  cursor: pointer;
+.toc-title {
   display: inline-block;
   padding: 14px 22px;
   margin: -18px 0 0;
@@ -322,10 +321,7 @@ mark.hit {
   font-size: 15px;
   letter-spacing: .04em;
   user-select: none;
-  transition: background .25s;
 }
-.toc summary:hover { background: rgba(86, 200, 196, 0.16); }
-.toc summary::-webkit-details-marker { display: none; }
 .toc-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
