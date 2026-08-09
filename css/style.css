@@ -201,9 +201,10 @@ h2 {
 .chapter p strong { color: var(--text); font-weight: 500; }
 .chapter p.highlight { color: var(--text); }
 
-/* reveal animation */
-.reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s ease, transform .9s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+/* reveal animation — контент видимий навіть без JS (прогресивне покращення) */
+.reveal { opacity: 1; transform: none; transition: opacity .9s ease, transform .9s ease; }
+html.js .reveal { opacity: 0; transform: translateY(26px); }
+html.js .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* ---------- prayer ---------- */
 .prayer {
@@ -312,6 +313,7 @@ mark.hit {
   overflow-y: auto;
 }
 .panel.open { opacity: 1; visibility: visible; }
+.panel:target { opacity: 1; visibility: visible; }
 .panel-box {
   width: 100%; max-width: 760px;
   background: var(--panel);
@@ -322,7 +324,7 @@ mark.hit {
   transition: transform .35s ease;
   box-shadow: 0 30px 80px rgba(0,0,0,.5);
 }
-.panel.open .panel-box { transform: translateY(0); }
+.panel.open .panel-box, .panel:target .panel-box { transform: translateY(0); }
 
 .panel-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
 .panel-head h3 {

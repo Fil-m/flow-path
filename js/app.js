@@ -282,9 +282,9 @@
     });
 
     /* events */
-    btnMenu && btnMenu.addEventListener('click', () => openPanel(false));
-    btnSearch && btnSearch.addEventListener('click', () => openPanel(true));
-    btnClose && btnClose.addEventListener('click', closePanel);
+    btnMenu && btnMenu.addEventListener('click', (e) => { e.preventDefault(); openPanel(false); });
+    btnSearch && btnSearch.addEventListener('click', (e) => { e.preventDefault(); openPanel(true); });
+    btnClose && btnClose.addEventListener('click', (e) => { e.preventDefault(); closePanel(); });
     searchInput.addEventListener('input', () => update(searchInput.value));
     searchInput.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closePanel();
