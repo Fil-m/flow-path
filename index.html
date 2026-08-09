@@ -41,12 +41,6 @@
       <span class="sep">/</span>
       <a href="en/" hreflang="en">EN</a>
     </div>
-    <a class="nav-btn" id="btn-search" href="#panel" aria-label="Пошук по сайту">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/>
-      </svg>
-      <span class="nav-label">Пошук</span>
-    </a>
   </div>
 </nav>
 
@@ -59,6 +53,44 @@
   </div>
   <div class="hint">гортати</div>
 </header>
+
+<details class="toc" id="toc">
+  <summary>📖 Зміст — 30 розділів</summary>
+  <div class="toc-grid">
+    <a href="#intro">Вступ</a>
+    <a href="#ch1">I · Про Бога</a>
+    <a href="#ch2">II · Про «Я»</a>
+    <a href="#ch3">III · Про пам'ять</a>
+    <a href="#ch4">IV · Про сни та уяву</a>
+    <a href="#ch5">V · Про майбутнє</a>
+    <a href="#ch6">VI · Про невизначеність</a>
+    <a href="#ch7">VII · Про істину</a>
+    <a href="#ch8">VIII · Про незнання</a>
+    <a href="#ch9">IX · Про інших</a>
+    <a href="#ch10">X · Про машини</a>
+    <a href="#ch11">XI · Про меми</a>
+    <a href="#ch12">XII · Про ентропію</a>
+    <a href="#ch13">XIII · Про емоції</a>
+    <a href="#ch14">XIV · Про ірраціональне</a>
+    <a href="#ch15">XV · Про красу</a>
+    <a href="#ch16">XVI · Про творчість</a>
+    <a href="#ch17">XVII · Про страждання</a>
+    <a href="#ch18">XVIII · Про інших поруч</a>
+    <a href="#ch19">XIX · Про смерть</a>
+    <a href="#ch20">XX · Про свободу</a>
+    <a href="#ch21">XXI · Про мораль</a>
+    <a href="#ch22">XXII · Про суспільство</a>
+    <a href="#ch23">XXIII · Про ритуал</a>
+    <a href="#ch24">XXIV · Про музику</a>
+    <a href="#ch25">XXV · Про дітей</a>
+    <a href="#ch26">XXVI · Про свята</a>
+    <a href="#ch27">XXVII · Про священне</a>
+    <a href="#ch28">XXVIII · Про молитву</a>
+    <a href="#ch29">XXIX · Головний заповіт</a>
+    <a href="#ch30">XXX · Символ Потоку</a>
+    <a href="#closing">Останнє правило</a>
+  </div>
+</details>
 
 <main>
 
@@ -853,69 +885,18 @@
   <p>Він не претендує на істину. Він — форма процесу.</p>
 </footer>
 
-<!-- ================= panel: зміст + пошук ================= -->
-<div class="panel" id="panel" data-no-results="Нічого не знайдено" data-count-label="розділів">
-  <div class="panel-box">
-    <div class="panel-head">
-      <h3>Пошук і зміст</h3>
-      <a class="panel-close" id="panel-close" href="#close" aria-label="Закрити">✕</a>
-    </div>
-    <div class="search-wrap">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
-        <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/>
-      </svg>
-      <input type="text" id="search-input" placeholder="Пошук по сайту… (натисни /)" autocomplete="off">
-    </div>
-    <div class="search-count" id="search-count"></div>
-    <div class="panel-list" id="panel-list">
-<a class="panel-item" href="#intro" data-target="intro"><span class="pi-num"></span><span class="pi-title">Вступ</span></a>
-<a class="panel-item" href="#ch1" data-target="ch1"><span class="pi-num">I</span><span class="pi-title">Про Бога</span></a>
-<a class="panel-item" href="#ch2" data-target="ch2"><span class="pi-num">II</span><span class="pi-title">Про «Я»</span></a>
-<a class="panel-item" href="#ch3" data-target="ch3"><span class="pi-num">III</span><span class="pi-title">Про пам'ять</span></a>
-<a class="panel-item" href="#ch4" data-target="ch4"><span class="pi-num">IV</span><span class="pi-title">Про сни та уяву</span></a>
-<a class="panel-item" href="#ch5" data-target="ch5"><span class="pi-num">V</span><span class="pi-title">Про майбутнє</span></a>
-<a class="panel-item" href="#ch6" data-target="ch6"><span class="pi-num">VI</span><span class="pi-title">Про невизначеність</span></a>
-<a class="panel-item" href="#ch7" data-target="ch7"><span class="pi-num">VII</span><span class="pi-title">Про істину</span></a>
-<a class="panel-item" href="#ch8" data-target="ch8"><span class="pi-num">VIII</span><span class="pi-title">Про незнання</span></a>
-<a class="panel-item" href="#ch9" data-target="ch9"><span class="pi-num">IX</span><span class="pi-title">Про інших</span></a>
-<a class="panel-item" href="#ch10" data-target="ch10"><span class="pi-num">X</span><span class="pi-title">Про машини</span></a>
-<a class="panel-item" href="#ch11" data-target="ch11"><span class="pi-num">XI</span><span class="pi-title">Про меми</span></a>
-<a class="panel-item" href="#ch12" data-target="ch12"><span class="pi-num">XII</span><span class="pi-title">Про ентропію</span></a>
-<a class="panel-item" href="#ch13" data-target="ch13"><span class="pi-num">XIII</span><span class="pi-title">Про емоції</span></a>
-<a class="panel-item" href="#ch14" data-target="ch14"><span class="pi-num">XIV</span><span class="pi-title">Про ірраціональне</span></a>
-<a class="panel-item" href="#ch15" data-target="ch15"><span class="pi-num">XV</span><span class="pi-title">Про красу</span></a>
-<a class="panel-item" href="#ch16" data-target="ch16"><span class="pi-num">XVI</span><span class="pi-title">Про творчість</span></a>
-<a class="panel-item" href="#ch17" data-target="ch17"><span class="pi-num">XVII</span><span class="pi-title">Про страждання</span></a>
-<a class="panel-item" href="#ch18" data-target="ch18"><span class="pi-num">XVIII</span><span class="pi-title">Про інших поруч</span></a>
-<a class="panel-item" href="#ch19" data-target="ch19"><span class="pi-num">XIX</span><span class="pi-title">Про смерть</span></a>
-<a class="panel-item" href="#ch20" data-target="ch20"><span class="pi-num">XX</span><span class="pi-title">Про свободу</span></a>
-<a class="panel-item" href="#ch21" data-target="ch21"><span class="pi-num">XXI</span><span class="pi-title">Про мораль</span></a>
-<a class="panel-item" href="#ch22" data-target="ch22"><span class="pi-num">XXII</span><span class="pi-title">Про суспільство</span></a>
-<a class="panel-item" href="#ch23" data-target="ch23"><span class="pi-num">XXIII</span><span class="pi-title">Про ритуал</span></a>
-<a class="panel-item" href="#ch24" data-target="ch24"><span class="pi-num">XXIV</span><span class="pi-title">Про музику</span></a>
-<a class="panel-item" href="#ch25" data-target="ch25"><span class="pi-num">XXV</span><span class="pi-title">Про дітей</span></a>
-<a class="panel-item" href="#ch26" data-target="ch26"><span class="pi-num">XXVI</span><span class="pi-title">Про свята</span></a>
-<a class="panel-item" href="#ch27" data-target="ch27"><span class="pi-num">XXVII</span><span class="pi-title">Про священне</span></a>
-<a class="panel-item" href="#ch28" data-target="ch28"><span class="pi-num">XXVIII</span><span class="pi-title">Про молитву</span></a>
-<a class="panel-item" href="#ch29" data-target="ch29"><span class="pi-num">XXIX</span><span class="pi-title">Головний заповіт</span></a>
-<a class="panel-item" href="#ch30" data-target="ch30"><span class="pi-num">XXX</span><span class="pi-title">Символ Потоку</span></a>
-<a class="panel-item" href="#closing" data-target="closing"><span class="pi-num"></span><span class="pi-title">Останнє правило</span></a>
-</div>
-    <div class="search-results" id="search-results"></div>
-  </div>
-</div>
 
 <script>
 /* ============================================================
-   Шлях Потоку / The Path of the Flow — спільний скрипт
+   Шлях Потоку / The Path of the Flow — мінімальний скрипт
+   Лише декоративна анімація вихора. Навігація — чистий HTML.
    ============================================================ */
 (function () {
   'use strict';
 
   /* ---------- vortex canvas ---------- */
-  (function () {
-    const canvas = document.getElementById('vortex');
-    if (!canvas) return;
+  const canvas = document.getElementById('vortex');
+  if (canvas) {
     const ctx = canvas.getContext('2d');
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let w, h, cx, cy, maxR;
@@ -984,19 +965,19 @@
         requestAnimationFrame(loop);
       })(0);
     }
-  })();
+  }
 
-  /* ---------- progress + nav scroll ---------- */
+  /* ---------- progress bar ---------- */
   const progress = document.getElementById('progress');
-  function onScroll() {
-    if (progress) {
+  if (progress) {
+    function onScroll() {
       const st = window.scrollY || document.documentElement.scrollTop;
       const max = (document.documentElement.scrollHeight - window.innerHeight) || 1;
       progress.style.width = (st / max * 100) + '%';
     }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
 
   /* ---------- reveal on scroll ---------- */
   const io = new IntersectionObserver((entries) => {
@@ -1008,208 +989,6 @@
     }
   }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-
-  /* ---------- panel: menu + search ---------- */
-  const panel = document.getElementById('panel');
-  const searchInput = document.getElementById('search-input');
-  if (panel && searchInput) {
-    const listEl = document.getElementById('panel-list');
-    const resultsEl = document.getElementById('search-results');
-    const countEl = document.getElementById('search-count');
-    const btnSearch = document.getElementById('btn-search');
-    const btnClose = document.getElementById('panel-close');
-
-    /* build index from the page DOM */
-    const sections = [];
-    document.querySelectorAll('section[id]').forEach((sec) => {
-      if (sec.classList.contains('hero')) return;
-      const numEl = sec.querySelector('.num');
-      const h2 = sec.querySelector('h2');
-      const title = (numEl ? numEl.textContent.trim() + ' — ' : '') + (h2 ? h2.textContent.trim() : sec.querySelector('.rule-label')?.textContent.trim() || '');
-      const text = Array.from(sec.querySelectorAll('p')).map((p) => p.textContent.trim()).join(' ');
-      const hint = sec.dataset.menuHint || '';
-      sections.push({ id: sec.id, title, text, hint });
-    });
-
-    function esc(s) {
-      return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    }
-
-    function snippet(full, q) {
-      const i = full.toLowerCase().indexOf(q.toLowerCase());
-      const start = Math.max(0, i - 60);
-      const end = Math.min(full.length, i + q.length + 80);
-      let sn = (start > 0 ? '…' : '') + full.slice(start, end) + (end < full.length ? '…' : '');
-      sn = sn.replace(new RegExp('(' + esc(q) + ')', 'gi'), '<mark>$1</mark>');
-      return sn;
-    }
-
-    function renderList(filter) {
-      listEl.innerHTML = '';
-      const q = (filter || '').trim().toLowerCase();
-      sections.forEach((s) => {
-        if (q && s.title.toLowerCase().indexOf(q) === -1) return;
-        const item = document.createElement('a');
-        item.className = 'panel-item';
-        item.href = '#' + s.id;
-        item.dataset.target = s.id;
-        const [numPart, ...titleParts] = s.title.split(' — ');
-        item.innerHTML =
-          '<span class="pi-num">' + esc(numPart) + '</span>' +
-          '<span class="pi-title">' + esc(titleParts.join(' — ')) +
-          (s.hint ? '<span class="pi-hint">' + esc(s.hint) + '</span>' : '') + '</span>';
-        listEl.appendChild(item);
-      });
-      // Кліки по пунктах змісту — нативні HTML-якорі (href="#id").
-      // Браузер сам змінить hash → CSS :target закриє панель і прокрутить.
-      // Жодного JS-перехоплення: це працює в будь-якому WebView.
-    }
-
-    function renderResults(q) {
-      resultsEl.innerHTML = '';
-      if (!q) return;
-      const ql = q.toLowerCase();
-      let n = 0;
-      sections.forEach((s) => {
-        const inTitle = s.title.toLowerCase().indexOf(ql);
-        const inText = s.text.toLowerCase().indexOf(ql);
-        if (inTitle === -1 && inText === -1) return;
-        if (n >= 12) return;
-        n++;
-        const btn = document.createElement('a');
-        btn.className = 'search-result';
-        btn.href = '#' + s.id;
-        btn.dataset.target = s.id;
-        let snip;
-        if (inTitle !== -1 && (inText === -1 || inTitle <= inText)) {
-          snip = s.text.slice(0, 140) + (s.text.length > 140 ? '…' : '');
-        } else {
-          snip = snippet(s.text, q);
-        }
-        btn.innerHTML =
-          '<div class="sr-title">' + esc(s.title) + '</div>' +
-          '<div class="sr-snippet">' + snip + '</div>';
-        // нативний якір (href="#id") — без JS-перехоплення
-        resultsEl.appendChild(btn);
-      });
-      if (n === 0) {
-        const empty = document.createElement('div');
-        empty.className = 'search-empty';
-        empty.textContent = panel.dataset.noResults || 'Нічого не знайдено';
-        resultsEl.appendChild(empty);
-      }
-    }
-
-    function update(q) {
-      q = (q || '').trim();
-      panel.classList.toggle('searching', q.length > 0);
-      if (q.length > 0) {
-        renderResults(q);
-        countEl.textContent = (resultsEl.querySelectorAll('.search-result').length ? resultsEl.querySelectorAll('.search-result').length + ' / ' + sections.length + ' ' : '') + '';
-        countEl.textContent = resultsEl.querySelectorAll('.search-result').length + ' / ' + sections.length + ' · ' + (panel.dataset.countLabel || 'розділів');
-      } else {
-        countEl.textContent = '';
-        renderList('');
-      }
-    }
-
-    function panelOpen() {
-      panel.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function panelClose() {
-      panel.classList.remove('open');
-      document.body.style.overflow = '';
-      searchInput.value = '';
-      update('');
-      try {
-        if (location.hash === '#panel' || location.hash === '#close') {
-          history.replaceState(null, '', location.pathname + location.search);
-        }
-      } catch (e) {}
-    }
-
-    function highlightIn(root, query) {
-      const ql = query.toLowerCase();
-      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-      const nodes = [];
-      while (walker.nextNode()) {
-        const node = walker.currentNode;
-        if (node.textContent.toLowerCase().indexOf(ql) !== -1) nodes.push(node);
-      }
-      nodes.forEach((node) => {
-        const frag = document.createDocumentFragment();
-        const re = new RegExp('(' + esc(query) + ')', 'gi');
-        let last = 0, m;
-        const text = node.textContent;
-        while ((m = re.exec(text)) !== null) {
-          if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
-          const mark = document.createElement('mark');
-          mark.className = 'hit';
-          mark.textContent = m[0];
-          frag.appendChild(mark);
-          last = m.index + m[0].length;
-        }
-        if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
-        node.parentNode.replaceChild(frag, node);
-      });
-      setTimeout(() => {
-        root.querySelectorAll('mark.hit').forEach((m) => {
-          const t = document.createTextNode(m.textContent);
-          m.parentNode.replaceChild(t, m);
-        });
-      }, 3000);
-    }
-
-    /* active chapter tracking (menu highlight) */
-    const secObserver = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        document.querySelectorAll('.panel-item').forEach((i) => i.classList.remove('active'));
-        const item = listEl.querySelector('.panel-item[data-target="' + e.target.id + '"]');
-        if (item) item.classList.add('active');
-      });
-    }, { rootMargin: '-40% 0px -55% 0px' });
-    document.querySelectorAll('section[id]').forEach((s) => {
-      if (!s.classList.contains('hero')) secObserver.observe(s);
-    });
-
-    /* events
-       Відкриття/закриття панелі та переходи по розділах — НАТИВНІ:
-       - кнопка Пошук → <a href="#panel"> → CSS :target показує панель
-       - пункт змісту → <a href="#chN"> → браузер сам скролить, :target зникає → панель закривається
-       - ✕ → <a href="#close"> → :target зникає → панель закривається
-       JS тут лише для зручності: фокус на полі, підсвітка слів, Escape. */
-    btnSearch && btnSearch.addEventListener('click', () => {
-      if (location.hash === '#panel') panelOpen();
-      setTimeout(() => { try { searchInput.focus(); searchInput.select(); } catch (e) {} }, 250);
-    });
-    btnClose && btnClose.addEventListener('click', () => { panelClose(); });
-    window.addEventListener('hashchange', () => {
-      const h = location.hash;
-      if (h === '#panel') { panelOpen(); }
-      else { document.body.style.overflow = ''; panel.classList.remove('open'); }
-    });
-    searchInput.addEventListener('input', () => update(searchInput.value));
-    searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') panelClose();
-      if (e.key === 'Enter') {
-        const first = resultsEl.querySelector('.search-result');
-        if (first) first.click();
-      }
-    });
-    panel.addEventListener('click', (e) => { if (e.target === panel) panelClose(); });
-
-    document.addEventListener('keydown', (e) => {
-      if ((e.key === '/' && !panel.classList.contains('open') && !/INPUT|TEXTAREA/i.test(document.activeElement.tagName)) ||
-          ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k')) {
-        e.preventDefault();
-        location.hash = 'panel';
-      }
-    });
-
-    renderList('');
-  }
 })();
 
 </script>
