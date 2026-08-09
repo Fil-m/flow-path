@@ -168,15 +168,12 @@ main { position: relative; z-index: 2; }
 
 /* ---------- intro ---------- */
 .intro {
-  padding: 110px 24px 80px;
-  text-align: center;
+  padding: 88px 24px;
   scroll-margin-top: 70px;
 }
-.intro-inner { max-width: 640px; margin: 0 auto; }
+.intro-inner { max-width: 700px; margin: 0 auto; }
 .intro p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(21px, 3.2vw, 27px);
-  line-height: 1.65;
+  font-size: 17.5px; line-height: 1.85;
   color: var(--body);
   margin-bottom: 20px;
 }
@@ -365,7 +362,7 @@ mark.hit {
 
 /* ---------- responsive ---------- */
 @media (max-width: 760px) {
-  .chapter { padding: 70px 22px; }
+  .chapter, .intro { padding: 70px 22px; }
   .prayer { padding: 38px 26px; }
   nav { padding: 14px 18px; }
   .nav-btn { padding: 8px 12px; }
