@@ -41,7 +41,7 @@
       <span class="sep">/</span>
       <a href="en/" hreflang="en">EN</a>
     </div>
-    <a class="nav-btn" href="#toc-search">
+    <a class="nav-btn" href="#toc">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
         <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/>
       </svg>
@@ -1025,8 +1025,8 @@
     }
     tocSearch.addEventListener('input', applyFilter);
     if (clearBtn) clearBtn.addEventListener('click', () => { tocSearch.value = ''; applyFilter(); tocSearch.focus(); });
-    // якщо прийшли з кнопки «Пошук» в шапці — фокусуємо поле
-    if (location.hash === '#toc-search') setTimeout(() => { try { tocSearch.focus(); } catch (e) {} }, 300);
+    // якщо прийшли з кнопки «Пошук» в шапці (#toc) — фокусуємо поле
+    if (location.hash === '#toc' || location.hash === '#toc-search') setTimeout(() => { try { tocSearch.focus(); } catch (e) {} }, 300);
   }
 })();
 

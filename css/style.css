@@ -303,13 +303,18 @@ mark.hit {
 }
 @keyframes hitFlash { 0% { background: rgba(138, 123, 255, 0.55); } 100% { background: rgba(86, 200, 196, 0.35); } }
 
-/* ---------- пошук по змісту ---------- */
+/* ---------- пошук по змісту (прихований, відкривається по кнопці «Пошук») ---------- */
 .toc {
   max-width: 860px;
   margin: 0 auto;
   padding: 0 28px;
   font-weight: 300;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
 }
+.toc:target { max-height: 3000px; opacity: 1; visibility: visible; }
 .toc-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

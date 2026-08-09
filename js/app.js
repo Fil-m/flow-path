@@ -127,7 +127,7 @@
     }
     tocSearch.addEventListener('input', applyFilter);
     if (clearBtn) clearBtn.addEventListener('click', () => { tocSearch.value = ''; applyFilter(); tocSearch.focus(); });
-    // якщо прийшли з кнопки «Пошук» в шапці — фокусуємо поле
-    if (location.hash === '#toc-search') setTimeout(() => { try { tocSearch.focus(); } catch (e) {} }, 300);
+    // якщо прийшли з кнопки «Пошук» в шапці (#toc) — фокусуємо поле
+    if (location.hash === '#toc' || location.hash === '#toc-search') setTimeout(() => { try { tocSearch.focus(); } catch (e) {} }, 300);
   }
 })();
